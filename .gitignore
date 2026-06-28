@@ -1,0 +1,75 @@
+# 数据 & 大文件
+*.json
+*.csv
+*.pdf
+*.pt
+*.pth
+*.log
+*.png
+*.jpg
+
+# checkpoint
+checkpoints*/
+
+# 环境
+__pycache__/
+*.pyc
+.claude/
+
+# 废弃/探索脚本
+experiments/exp2_ablation/
+experiments/exp3_prompt_length/
+experiments/exp4_multiscale_layers/
+experiments/exp5_loss_weights/
+experiments/exp6_efficiency/
+experiments/exp_7b/
+
+# 废弃的早期文件
+model.py
+autoalign_model.py
+caiqu.py
+rewrite_paraphrases.py
+split_processed.py
+
+# 论文 & 图（不推送）
+paper.md
+*.png
+plot_heads.py
+plot_queries.py
+plot_tsne.py
+
+# 探索过程的中间脚本
+experiments/exp1_main_results/ours_wo_sp.py
+experiments/exp1_main_results/ours_wo_ms.py
+experiments/exp1_main_results/ours_full.py
+experiments/exp1_main_results/ours_twostage.py
+experiments/exp1_main_results/ours_full.py
+experiments/exp1_main_results/config_*.py
+experiments/exp1_main_results/qwen_clip_base.py
+experiments/exp1_main_results/taiyi_clip_lora.py
+experiments/exp1_main_results/taiyi_clip_zero_shot.py
+experiments/exp1_main_results/altclip_lora.py
+experiments/exp1_main_results/chinese_clip_finetune.py
+experiments/exp1_main_results/mha_residual.py
+experiments/exp1_main_results/mha_ms.py
+experiments/exp1_main_results/mha_itm.py
+experiments/exp1_main_results/mha_dualres.py
+experiments/exp1_main_results/mha_patch_itm.py
+experiments/exp1_main_results/mha_patch_cosine.py
+experiments/exp1_main_results/mha_patch_lora.py
+experiments/exp1_main_results/mha_vitlora.py
+experiments/exp1_main_results/mha_cross.py
+experiments/exp1_main_results/mha_qwenml.py
+experiments/exp1_main_results/qwen_ml.py
+experiments/exp1_main_results/mha_multiagg.py
+experiments/exp1_main_results/mha_heads1.py
+experiments/exp1_main_results/mha_heads4.py
+experiments/exp1_main_results/mha_heads12.py
+experiments/exp1_main_results/mha_q2.py
+experiments/exp1_main_results/mha_q8.py
+experiments/exp1_main_results/naive_plus.py
+experiments/exp1_main_results/mha_patch_topic_aug.py
+experiments/exp1_main_results/mha_patch_aug.py
+experiments/exp1_main_results/altclip_zero_shot.py
+experiments/exp1_main_results/wukong_clip_zero_shot.py
+translate_progress.json
