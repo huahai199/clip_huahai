@@ -73,3 +73,5 @@ experiments/exp1_main_results/mha_patch_aug.py
 experiments/exp1_main_results/altclip_zero_shot.py
 experiments/exp1_main_results/wukong_clip_zero_shot.py
 translate_progress.json
+*.zip
+*.b64
