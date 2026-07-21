@@ -27,10 +27,29 @@ Length ablation reveals: LLM domain knowledge contributes ~13pp of the gain; ext
 ## Setup
 
 ```bash
-pip install torch transformers peft tqdm pillow torchvision
+pip install torch==2.4.0 transformers==4.44.0 peft==0.12.0 tqdm pillow torchvision
 ```
 
 GPU memory ≥ 24 GB (Qwen2.5-1.5B + Chinese-CLIP ViT-B/16).
+
+## Reproducibility
+
+| Item | Setting |
+|------|---------|
+| PyTorch | 2.4.0 |
+| CUDA | 12.1 |
+| Transformers | 4.44.0 |
+| PEFT | 0.12.0 |
+| Random seed | Not set (default) |
+| Optimizer | AdamW (weight decay = 1e-4) |
+| Learning rate | 1e-4 (constant, no scheduler) |
+| Warm-up | None |
+| Batch size | 16 |
+| Gradient accumulation | 2 steps (effective batch = 32) |
+| Epochs | 20 |
+| Mixed precision | AMP (autocast + GradScaler) |
+| Temperature τ | Initialized at 0.07, learnable |
+| LoRA (external baselines) | r=4, α=8, targets q_proj + v_proj |
 
 ## Data
 
