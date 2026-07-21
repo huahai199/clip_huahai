@@ -37,7 +37,6 @@ Standard CLIP text encoders are capped at 77 tokens — insufficient for long-fo
 | CUDA | 12.1 |
 | Transformers | 4.44.0 |
 | PEFT | 0.12.0 |
-| Random seed | 42 |
 | Optimizer | AdamW (wd=1e-4) |
 | LR | 1e-4, constant |
 | Batch / GradAccum | 16 / 2 (=32) |
@@ -62,10 +61,5 @@ python reproduce/run_all.py
 ├── dataset.py                   # Data loading
 ├── evaluate.py                  # Recall@K evaluation
 ├── dataset_processed.json       # AutoMaint-MM annotations
-├── images.zip                   # Raw images
-└── reproduce/                   # Reproducible experiments
-    ├── mha_patch.py             # Best model
-    ├── qwen_naive.py            # Baseline
-    ├── run_all.py               # Batch runner
-    └── ...
+└── images.zip                   # Raw images
 ```
