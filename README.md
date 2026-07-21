@@ -47,11 +47,13 @@ Standard CLIP text encoders are capped at 77 tokens — insufficient for long-fo
 ## Quick Start
 
 ```bash
-# Best model (seed=42)
-python reproduce/mha_patch.py
+# Best model
+python experiments/exp1_main_results/mha_patch.py
 
-# Run all experiments
-python reproduce/run_all.py
+# Baselines
+python experiments/exp1_main_results/mha_pooling.py
+python experiments/exp1_main_results/qwen_naive.py
+python experiments/exp1_main_results/chinese_clip_lora.py
 ```
 
 ## Structure
