@@ -16,23 +16,6 @@ Standard CLIP text encoders are capped at 77 tokens — insufficient for long-fo
 
 - 1,054 images → 843 train / 211 test
 - Each image: 1 original text + 3 paraphrases → 3,372 training pairs
-- `dataset_processed.json` and `images.zip` included in the repo
-
-### Build from scratch
-
-```bash
-# 1. Parse PDFs via MinerU
-python pipeline/step1_pdf_parse.py --pdf_dir ./pdfs --api_key YOUR_KEY
-
-# 2. Extract image-text pairs
-python pipeline/step2_extract_pairs.py --parsed_dir ./parsed
-
-# 3. Refine with vision LLM
-python pipeline/step3_vlm_refine.py --image_root /root/autodl-tmp --api_key YOUR_KEY
-
-# 4. Paraphrase & split
-python pipeline/step4_augment_split.py --api_key YOUR_KEY
-```
 
 ## Results
 
@@ -66,42 +49,23 @@ python pipeline/step4_augment_split.py --api_key YOUR_KEY
 
 ```bash
 # Best model (seed=42)
-cd reproduce && python mha_patch.py
+python reproduce/mha_patch.py
 
 # Run all experiments
 python reproduce/run_all.py
-
-# Length ablation only
-python reproduce/run_len.py
 ```
 
 ## Structure
 
 ```
-├── model_v2.py                  # Core model: QwenCLIPRetriever, MHA pooling, Patch fusion
+├── model_v2.py                  # Core model: MHA pooling, Patch fusion
 ├── dataset.py                   # Data loading
-├── train_joint.py               # Original training script
 ├── evaluate.py                  # Recall@K evaluation
 ├── dataset_processed.json       # AutoMaint-MM annotations
 ├── images.zip                   # Raw images
-│
-├── pipeline/                    # Dataset construction pipeline
-│   ├── step1_pdf_parse.py
-│   ├── step2_extract_pairs.py
-│   ├── step3_vlm_refine.py
-│   └── step4_augment_split.py
-│
-└── reproduce/                   # Reproducible experiments (seed=42)
-    ├── mha_patch.py             # ★ Best: MHA Pooling + Patch Fusion
-    ├── mha_pooling.py
-    ├── qwen_naive.py
-    ├── naive_patch.py
-    ├── mha_patch_nores.py       # Ablation: no residual
-    ├── chinese_clip_lora.py
-    ├── qwen_len{77,128,256,512}.py  # Length ablation
-    ├── mha_heads{1,4,12}.py     # MHA heads
-    ├── mha_multiagg.py, mha_q{2,8}.py  # Query count
+└── reproduce/                   # Reproducible experiments
+    ├── mha_patch.py             # Best model
+    ├── qwen_naive.py            # Baseline
     ├── run_all.py               # Batch runner
-    ├── run_len.py               # Length runner
-    └── eval_len.py              # Length evaluator
+    └── ...
 ```
